@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <meta name="description" content="출발지와 도착지를 검색하고 자동차 경로의 거리를 확인하세요.">
+    <title>거리 한눈에 | 장소 간 거리 측정</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="거리 한눈에 홈">
+        <span class="brand-mark" aria-hidden="true">↗</span>
+        <span>거리 한눈에</span>
+      </a>
+      <span class="topbar-note">간편한 거리 측정</span>
+    </header>
+
+    <main class="page">
+      <section class="intro" aria-labelledby="page-title">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> PLACE TO PLACE</span>
+        <h1 id="page-title">어디서 어디까지,<br><span>얼마나 멀까요?</span></h1>
+        <p>장소를 검색하고 두 지점 사이의 자동차 이동 거리를 확인해 보세요.</p>
+      </section>
+
+      <section class="planner" aria-label="거리 측정">
+        <div class="route-fields">
+          <div class="field">
+            <label for="origin-input"><span class="field-dot origin-dot"></span>출발지</label>
+            <div class="input-row">
+              <input id="origin-input" type="search" placeholder="예: 서울역" autocomplete="off" maxlength="200">
+              <button class="search-button" type="button" data-search="origin">검색</button>
+            </div>
+            <div class="results" id="origin-results" aria-live="polite"></div>
+            <div class="selected-place" id="origin-selected"></div>
+          </div>
+
+          <div class="route-divider" aria-hidden="true"><span></span></div>
+
+          <div class="field">
+            <label for="destination-input"><span class="field-dot destination-dot"></span>도착지</label>
+            <div class="input-row">
+              <input id="destination-input" type="search" placeholder="예: 부산역" autocomplete="off" maxlength="200">
+              <button class="search-button" type="button" data-search="destination">검색</button>
+            </div>
+            <div class="results" id="destination-results" aria-live="polite"></div>
+            <div class="selected-place" id="destination-selected"></div>
+          </div>
+        </div>
+
+        <button class="measure-button" id="measure-button" type="button">
+          <span>거리 확인하기</span><span aria-hidden="true">→</span>
+        </button>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+
+        <section class="distance-card" id="distance-card" aria-live="polite" hidden>
+          <span class="result-label">자동차 경로 거리</span>
+          <div class="distance-value"><span id="distance-value">—</span><span class="distance-unit">km</span></div>
+          <a class="map-link" id="map-link" target="_blank" rel="noopener noreferrer">
+            지도에서 보기 <span aria-hidden="true">↗</span>
+          </a>
+          <p class="route-note">실제 이동 거리는 선택한 경로와 도로 상황에 따라 달라질 수 있어요.</p>
+        </section>
+      </section>
+
+      <p class="attribution">
+        장소 정보 <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap</a>
+        · 경로 안내 <a href="https://project-osrm.org/" target="_blank" rel="noopener noreferrer">OSRM</a>
+      </p>
+    </main>
+  </body>
+</html>
